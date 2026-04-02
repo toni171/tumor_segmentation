@@ -141,5 +141,18 @@
     "Dice": 0.91399149936072432,
     "Jaccard": 0.8416062110220186,
     "CentroidEuclDistance": 2.9762079471713774
+  },
+  "overall_results": {
+    "AreaSeg": 10797.727272727272,
+    "AreaGT": 11678.727272727272,
+    "PerimeterSeg": 358.32418181818178,
+    "PerimeterGT": 380.02636363636356,
+    "Precision": 0.92267191553085615,
+    "Recall": 0.80840121720251445,
+    "FalsePositiveRate": 0.0016823752482306451,
+    "RelAreaError": -0.10508996435176118,
+    "Dice": 0.851020826106141,
+    "Jaccard": 0.74608363632122388,
+    "CentroidEuclDistance": 8.4559972586195737
   }
 }

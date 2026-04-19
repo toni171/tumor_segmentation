@@ -60,7 +60,7 @@ classdef SegmenterModel
             fprintf("Extracting liver mask: ");
             obj.liver_mask = obj.init_img > obj.p.binary_thresh;
             fprintf("Done!\nApplying CLAHE: ");
-            level = prctile(obj.init_img(:),94); % it was 95
+            level = prctile(obj.init_img(:),obj.p.prctile);
             obj.adj_img = obj.init_img;
             obj.adj_img(obj.init_img > level) = level;
             obj.adj_img = adapthisteq(obj.adj_img, ...
@@ -101,12 +101,12 @@ classdef SegmenterModel
                 obj.S{k}(inside_mask) = S_neg(inside_mask) + ...
                     obj.p.eta * S_pos(inside_mask);
                 obj.phi{k+1} = obj.phi{k} + obj.p.dt .* obj.S{k};
-                if obj.p.reinit_int > 0 && mod(k, obj.p.reinit_int) == 0
-                    obj.phi{k} = sussmanReinit(obj.phi{k}, ...
+                if obj.p.reinit_int > 0 && mod(k, obj.p.reinit_int) == 1
+                    obj.phi{k+1} = sussmanReinit(obj.phi{k+1}, ...
                         obj.p.reinit_iters,obj.p.reinit_dt);
                 end
             end
-            obj.mask = obj.phi{k} < 0;
+            obj.mask = obj.phi{k+1} < 0;
             obj.mask = bwareaopen(obj.mask,obj.p.noise_area);
             obj.mask = imfill(obj.mask,'holes');
             fprintf("Done!\n")

@@ -2,7 +2,7 @@ close all;
 clear;
 clc;
 i = 1;
-while i<=1
+while i<=11
 m = SegmenterModel('config.json','results.json');
 m = m.setImage(i);
 m = m.preprocessImage();
@@ -11,8 +11,11 @@ m = m.extractRegionProps();
 m = m.tumorIdentification();
 m = m.calculateEvalMetrics();
 m.showEvolution(10,0.2);
-%m.showSegmentation();
-fprintf("Accuracy %f\n",m.eval_metrics.Precision);
+m.showSegmentation();
+fprintf("Accuracy: %f\n",m.eval_metrics.Precision);
+fprintf("Recall: %f\n",m.eval_metrics.Recall);
+fprintf("Dice: %f\n",m.eval_metrics.Dice);
+fprintf("Jaccard: %f\n\n",m.eval_metrics.Jaccard);
 i = i+1;
 end
 results_path = "results.json";

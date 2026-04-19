@@ -19,8 +19,8 @@
   "beta": 0.7,
   "mu_ldtp": 0.035,
   "dt": 0.70,
-  "reinit_int": 50,
-  "reinit_dt": 0.4,
+  "reinit_int": 100,
+  "reinit_dt": 0.005,
   "reinit_iters": 5,
   "band_width": 3,
   "eta": 0.32,
@@ -32,5 +32,6 @@
   "pixel_spacing": 1.0,
   "n_samples": 1000,
   "binary_thresh": 0.01,
-  "close_r": 2
+  "close_r": 2,
+  "prctile": 94
 }
